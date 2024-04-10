@@ -1,6 +1,6 @@
 # Students-Satisfaction_Survey
 
-Analyzing students' satisfaction about the facilities provided in their institute is very crucial for the marketers and for the institution itself. 
+Analyzing students' satisfaction about the facilities provided in the institution is very crucial for the marketers and for the institution itself. 
 
 Below are the insights from the analysis made.
 
