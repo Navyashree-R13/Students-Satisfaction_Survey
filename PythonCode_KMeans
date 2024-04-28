@@ -1,0 +1,39 @@
+!pip install scikit-learn
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import KMeans
+!pip install openpyxl
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load the dataset
+file_path = "C:/Users/Navyashree/Desktop/MBA/Student_Satisfaction_Survey.xlsx"
+data = pd.read_excel(file_path)
+
+# Preparing the dataset for clustering
+# Excluding the 'timestamp' column
+df_for_clustering = data.drop(columns=['timestamp'])
+
+# Normalizing the dataset
+scaler = StandardScaler()
+df_normalized = scaler.fit_transform(df_for_clustering)
+
+# Finding the optimal number of clusters using the Elbow Method
+inertia = []
+for k in range(1, 7):  # Testing 1 through 6 clusters
+    kmeans = KMeans(n_clusters=k, random_state=42)
+    kmeans.fit(df_normalized)
+    inertia.append(kmeans.inertia_)
+
+# Plotting the Elbow plot
+plt.figure(figsize=(10, 6))
+plt.plot(range(1, 7), inertia, marker='o', linestyle='--')
+plt.title('Elbow Method for Optimal Number of Clusters')
+plt.xlabel('Number of clusters')
+plt.ylabel('Inertia')
+plt.xticks(range(1, 7))
+plt.grid(True)
+plt.show()
